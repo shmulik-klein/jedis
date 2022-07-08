@@ -468,13 +468,9 @@ system-setup:
 	cd /usr/bin ;\
 	sudo ln -sf gcc-8 gcc ;\
 	sudo ln -sf g++-8 g++
-	cd ~
-	[ ! -e dragonfly ] && git clone https://github.com/dragonflydb/dragonfly.git --recursive --branch main --single-branch || true
-	cd dragonfly/helio
-	pwd
-	ls
-	./blaze.sh -release
-	cd ../build-opt && ninja -j 1 dragonfly
+	cd ~; [ ! -e dragonfly ] && git clone https://github.com/dragonflydb/dragonfly.git --recursive --branch main --single-branch || true
+	cd ~/dragonfly; ./helio/blaze.sh -release; ls ~/dragonfly -la
+	cd ~/dragonfly/build-opt; ninja -j 1 dragonfly
 
 compile-module:
 	gcc -shared -o /tmp/testmodule.so -fPIC src/test/resources/testmodule.c
