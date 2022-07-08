@@ -469,8 +469,10 @@ system-setup:
 	sudo ln -sf gcc-8 gcc ;\
 	sudo ln -sf g++-8 g++
 	cd ~
-	[ ! -e dragonfly-git ] && git clone https://github.com/dragonflydb/dragonfly.git --recursive --branch main --single-branch dragonfly-git || true
-	cd dragonfly-git/helio
+	[ ! -e dragonfly ] && git clone https://github.com/dragonflydb/dragonfly.git --recursive --branch main --single-branch || true
+	cd dragonfly/helio
+	pwd
+	ls
 	./blaze.sh -release
 	cd ../build-opt && ninja -j 1 dragonfly
 
