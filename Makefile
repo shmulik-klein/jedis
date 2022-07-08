@@ -472,7 +472,7 @@ system-setup:
 	[ ! -e dragonfly-git ] && git clone https://github.com/dragonflydb/dragonfly.git --recursive --branch main --single-branch dragonfly-git || true
 	cd dragonfly-git/helio
 	./blaze.sh -release
-	cd ../build-opt && ninja dragonfly
+	cd ../build-opt && ninja -j 1 dragonfly
 
 compile-module:
 	gcc -shared -o /tmp/testmodule.so -fPIC src/test/resources/testmodule.c
